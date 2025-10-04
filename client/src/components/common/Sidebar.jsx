@@ -13,11 +13,15 @@ import FavouriteList from './FavouriteList'
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user.value)
+  // console.log(user);
   const boards = useSelector((state) => state.board.value)
   const shared = useSelector((state)=>state.sharedBoard.value)
+  //console.log("boards",boards);
+  //console.log("shared",shared);
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { boardId } = useParams()
+  //console.log(boardId);
   const [activeIndex, setActiveIndex] = useState(0)
 
   const sidebarWidth = 250

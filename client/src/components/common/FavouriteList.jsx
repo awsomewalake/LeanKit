@@ -29,6 +29,21 @@ const FavouriteList = () => {
     setActiveIndex(index)
   }, [list, boardId])
 
+
+  //shared
+  useEffect(() => {
+    const getSharedBoards = async () => {
+      try {
+        const res = await boardApi.getFavouritesShared()
+        dispatch(setFavouriteList(res))
+      } catch (err) {
+        alert(err)
+      }
+    }
+    getSharedBoards()
+  }, [])
+
+  //shared end
   const onDragEnd = async ({ source, destination }) => {
     const newList = [...list]
     const [removed] = newList.splice(source.index, 1)
@@ -80,6 +95,7 @@ const FavouriteList = () => {
                           cursor: snapshot.isDragging ? 'grab' : 'pointer!important'
                         }}
                       >
+                        
                         <Typography
                           variant='body2'
                           fontWeight='700'

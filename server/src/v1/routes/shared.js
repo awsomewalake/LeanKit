@@ -28,6 +28,8 @@ router.get(
     tokenHandler.verifyToken,
     boardController.getFavourites
   )
+
+ 
   
   router.put(
     '/favourites',
@@ -46,7 +48,18 @@ router.get(
     tokenHandler.verifyToken,
     boardController.getOne
   )
-  
+  router.put(
+    '/addSharedUser/:boardId',
+    param('boardId').custom(value => {
+      console.log(value);
+      if (!validation.isObjectId(value)) {
+        return Promise.reject('invalid id')
+      } else return Promise.resolve()
+    }),
+    validation.validate,
+    tokenHandler.verifyToken,
+    boardController.addSharedUser
+  )
   router.put(
     '/:boardId',
     param('boardId').custom(value => {
@@ -62,6 +75,7 @@ router.get(
   router.delete(
     '/:boardId',
     param('boardId').custom(value => {
+      console.log(value);
       if (!validation.isObjectId(value)) {
         return Promise.reject('invalid id')
       } else return Promise.resolve()

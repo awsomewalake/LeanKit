@@ -17,9 +17,9 @@ const boardApi = {
   deleteShared: (id) => axiosClient.delete(`shared/${id}`),
   updateShared: (id, params) => axiosClient.put(`shared/${id}`, params),
   getFavouritesShared: () => axiosClient.get('shared/favourites'),
-  updateFavouritePositionShared: (params) => axiosClient.put('shared/favourites', params)
+  updateFavouritePositionShared: (params) => axiosClient.put('shared/favourites', params),
 
-  
+  addSharedUser:(id,params)=>axiosClient.put(`shared/addSharedUser/${id}`,params)
 }
 
 export default boardApi

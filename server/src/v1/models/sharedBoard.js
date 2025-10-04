@@ -2,13 +2,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {schemaOptions} = require('./modelOptions')
 
-
+const idSchema = new Schema({
+        userid:{
+            type:Schema.Types.ObjectId,
+            ref:'User',
+            required:true
+        }
+})
 const sharedSchema = new Schema({
-    user:{
-        type:Schema.Types.ObjectId,
-        ref:'User',
-        required:true
-    },
+    users:[idSchema],
     icon:{
         type:String,
         default:'📃'

@@ -26,6 +26,9 @@ router.post(
   validation.validate,
   userController.register
 )
+router.get('/users',
+  userController.users
+  )
 
 router.post(
   '/login',

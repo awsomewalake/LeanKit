@@ -22,6 +22,11 @@ exports.register = async (req, res) => {
   }
 }
 
+exports.users = async (req,res)=>{
+  const allusers = await User.find({},{username:1})
+  res.status(200).json({allusers})
+}
+
 exports.login = async (req, res) => {
   const { username, password } = req.body
   try {
